@@ -9,6 +9,7 @@ Requirements
 Installation
 ----
 ```
+npm install
 npm start
 ```
 
