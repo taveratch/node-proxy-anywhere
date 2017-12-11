@@ -1,7 +1,7 @@
 {
   "name": "node-proxy-http",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Proxy for client-side, preventing from CORS (Cross-origin domain) problem.",
   "main": "lib/index.js",
   "scripts": {
     "start": "nodemon --exec npm run babel-node -- index.js",
