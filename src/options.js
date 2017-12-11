@@ -1,13 +1,13 @@
-import config from './config.json'
 import url from 'url'
 
+const defaultHost = 'http://localhost'
 const getQuery = (originalUrl, primaryParamKey = 'q') => {
     let index = originalUrl.indexOf(`${primaryParamKey}=`)
     return originalUrl.substring(index + 2)
 }
 
 export default (setting = {}) => ({
-    target: config.host,
+    target: defaultHost,
     router: (req) => {
         let q = getQuery(req.originalUrl)
         let parsedUrl = url.parse(q)

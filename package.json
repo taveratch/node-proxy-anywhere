@@ -1,6 +1,6 @@
 {
   "name": "node-proxy-http",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Proxy for client-side, preventing from CORS (Cross-origin domain) problem.",
   "main": "lib/index.js",
   "scripts": {

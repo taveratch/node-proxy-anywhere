@@ -10,5 +10,6 @@ app.use(morgan('combined'))
 
 export default (setting) => ({
     app,
-    proxy: proxyMiddleware(getOptions(setting))
+    proxy: proxyMiddleware(getOptions(setting)),
+    getOptions
 })
