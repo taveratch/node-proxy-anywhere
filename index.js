@@ -1,20 +1,10 @@
-import cors from 'cors'
-import express from 'express'
-import morgan from 'morgan'
-import opt from './options'
-import proxy from 'http-proxy-middleware'
+import pxy from './src'
 
-const PORT = process.env.PORT || 5000
+const setting = {}
+const { app, proxy } = pxy(setting)
 
-let app = express()
-app.use(cors())
-app.use(morgan('combined'))
-app.use('/proxy', proxy(opt))
+app.use('/proxy', proxy)
 
-app.listen(PORT, () => {
-    console.log(`Proxy server is running on port = ${PORT}`)
+app.listen(5000, () => {
+    console.log('Server is running')
 })
-
-
-export default app
-export const options = opt

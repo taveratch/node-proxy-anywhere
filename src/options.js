@@ -1,12 +1,12 @@
 import config from './config.json'
 import url from 'url'
 
-const getQuery = originalUrl => {
-    let index = originalUrl.indexOf('q=')
-    return originalUrl.substring(index+2)
+const getQuery = (originalUrl, primaryParamKey = 'q') => {
+    let index = originalUrl.indexOf(`${primaryParamKey}=`)
+    return originalUrl.substring(index + 2)
 }
 
-let options = {
+export default (setting = {}) => ({
     target: config.host,
     router: (req) => {
         let q = getQuery(req.originalUrl)
@@ -16,7 +16,7 @@ let options = {
         return target
     },
     pathRewrite: (path, req) => {
-        let q = getQuery(req.originalUrl)
+        let q = getQuery(req.originalUrl, setting.key)
         let parsedUrl = url.parse(q)
         let urlPath = parsedUrl.path
         console.log('Path: ' + urlPath)
@@ -31,6 +31,4 @@ let options = {
         proxyReq.headers = req.headers
     },
     changeOrigin: true
-}
-
-export default options
+})

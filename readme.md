@@ -9,23 +9,25 @@ Requirements
 Installation
 ----
 ```
-npm install
-npm start
+npm install --save node-proxy-http
 ```
 
 Usage
 ----
-
-Pattern:
 ```
-http://proxyHost/api?q=anotherEndPoint
-```
+import nodeProxy from 'node-proxy-http'
+const setting = {...}
+const { app, proxy } = nodeProxy(setting)
 
-Suppose proxy is running at `http://localhost:3002`.
-```
-// client-site
-
-fetch('http://localhost:3002/api?q=https://jsonplaceholder.typicode.com/posts')
+app.use('/proxy', proxy)
+app.listen(5000)
 ```
 
-Now we can avoid Cross-Origin problem.
+Usage in frontend:
+```
+fetch(http://localhost:5000/proxy?q=https://myApi)
+```
+
+**setting**
+
+***key*** Params's key (Example, `/proxy?param=`) ***key*** is `param` | (Default is `q`)
