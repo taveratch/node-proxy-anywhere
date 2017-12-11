@@ -2,7 +2,7 @@
   "name": "node-proxy-http",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "nodemon --exec npm run babel-node -- index.js",
     "babel-node": "babel-node",
